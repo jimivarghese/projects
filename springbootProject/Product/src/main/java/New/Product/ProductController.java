@@ -32,6 +32,13 @@ public class ProductController {
 		return ProductService.getByIdProduct(pid);
 	}
 	
+	@GetMapping("/idDisplay")
+	public String detailsDisplay(@RequestParam Long phnum,
+			                     @RequestParam String place)
+	{
+		return "Phone_Num:"+phnum+"   "+"Place:"+place;
+	}
+	
 	
 	@PutMapping("/updatePro/{productId}")
 	public Product updateProduct(@PathVariable Long productId,@RequestBody Product prodt)
