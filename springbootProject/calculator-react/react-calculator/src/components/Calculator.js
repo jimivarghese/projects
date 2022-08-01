@@ -1,0 +1,93 @@
+import React, { useState } from 'react'
+import "./Calculator.css";
+
+//function Calculator() {
+    const Calculator=()=>
+    {
+       
+        const [inputValue,setInputValue]= useState("");
+
+        const display=(value)=>
+        {
+            setInputValue(inputValue+value);
+        }
+        const calculate=()=>
+        {
+            try{
+              let answer =eval(inputValue);
+             setInputValue(answer);
+
+            }
+            catch(error)
+            {
+              setInputValue("Error");
+            }
+             
+        };
+        const clear=()=>
+        {
+            setInputValue("");
+        };
+        const backspace=()=>
+        {
+         
+            setInputValue(inputValue.slice(0,-1));
+
+          
+          
+        };
+    
+  return (
+   
+
+<div class="divone col-md-3">
+   
+        <input type="text" id="screen" placeholder="0" value={inputValue}/>
+        <br/>
+        
+        <button class="button number" onClick={()=> {display("9")}}>9</button>
+        <button class="button number" onClick={()=> {display("8")}}>8</button>
+        <button class="button number" onClick={()=> {display("7")}}>7</button>
+        <br/>
+        <button class="button number" onClick={()=> {display("6")}}>6</button>
+        <button class="button number" onClick={()=> {display("5")}}>5</button>
+        <button class="button number" onClick={()=> {display("4")}}>4</button>
+        <br/>
+        <button class="button number" onClick={()=> {display("3")}}>3</button>
+        <button class="button number" onClick={()=> {display("2")}}>2</button>
+        <button class="button number" onClick={()=> {display("1")}}>1</button>
+        <br/>
+        <button class="button operator" onClick={()=> {display(".")}}>.</button>
+        <button class="button number" onClick={()=> {display("0")}}>0</button>
+        <button class="button operator" onClick={()=> {display("/")}}>/</button>
+        <br/>
+        <button class="button operator" onClick={()=> {display("*")}}>*</button>
+        <button class="button operator" onClick={()=> {display("+")}}>+</button>
+        
+        <button class="button operator" onClick={()=> {display("-")}}>-</button>
+       
+      
+
+<br/>
+<button class="button operator" onClick={()=> {clear();}}>C</button>
+<button class="button operator" onClick={()=> {backspace();}}>D</button>
+        
+        <button class="button result" onClick={()=> {calculate();}}>=</button>
+        
+        
+        
+        
+
+  
+  
+</div>
+
+
+
+
+
+
+  )
+};
+
+export default Calculator
